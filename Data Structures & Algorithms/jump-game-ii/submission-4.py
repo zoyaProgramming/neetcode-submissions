@@ -1,0 +1,20 @@
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        # youre trying to 
+        # dijikstra's algorithm ?
+        # start from right? 
+        # [0, 1, 0]
+        idx = 0
+        count = 0
+        while idx < len(nums):
+            mx = idx + 1
+            for i in range(idx + 1, min(idx + 1+ nums[idx], len(nums))):
+                if i==len(nums) - 1:
+                    return count + 1
+                if i + nums[i] >= mx + nums[mx]: 
+                    mx = i
+
+            count += 1
+            idx = mx
+
+        return count - 1
